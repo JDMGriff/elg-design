@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-    const galleryEndpoint =
-        process.env.NEXT_PUBLIC_GALLERY_API_URL ||
-        "http://localhost:1338/api/galleries";
-
-    console.log("Fetching gallery from:", galleryEndpoint);
+    const galleryEndpoint = process.env.NEXT_PUBLIC_GALLERY_API_URL;
 
     try {
         const response = await fetch(`${galleryEndpoint}?populate=Image`, {
@@ -14,7 +10,6 @@ export async function GET() {
             },
         });
         const text = await response.text();
-        console.log("Gallery raw response:", text);
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -22,7 +17,7 @@ export async function GET() {
 
         const data = JSON.parse(text);
         const galleryData = data.data || [];
-        console.log("Parsed gallery data:", galleryData);
+
         return NextResponse.json(galleryData);
     } catch (error) {
         if (error instanceof Error) {

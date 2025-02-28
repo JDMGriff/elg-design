@@ -29,11 +29,9 @@ export default function Home() {
     const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
     const [heroData, setHeroData] = useState<HeroData | null>(null);
     const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     // Fetch data on mount
     useEffect(() => {
-        console.log(baseUrl);
         const fetchData = async () => {
             // Fetch gallery data
             const galleryRes = await fetch("/api/gallery");
