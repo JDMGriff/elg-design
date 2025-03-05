@@ -1,32 +1,22 @@
 import Image from "next/image";
-
-interface GalleryItem {
-    id: number;
-    Title: string;
-    Description: string;
-    Image: {
-        url: string;
-        height: number;
-        width: number;
-    } | null;
-}
+import { GalleryDataType } from "../types/types";
 
 interface GalleryProps {
-    galleryItems: GalleryItem[];
-    isOpen: boolean;
+    galleryData: GalleryDataType[];
+    isToggled: boolean;
 }
 
-export default function Gallery({ galleryItems, isOpen }: GalleryProps) {
+export default function Gallery({ galleryData, isToggled }: GalleryProps) {
     return (
         <div
             className={`w-1/3 bg-white p-8 absolute top-0 -right-0 h-full overflow-y-scroll transition-all duration-500 ${
-                isOpen ? "translate-x-0" : "translate-x-full"
+                isToggled ? "translate-x-0" : "translate-x-full"
             }`}
         >
-            {galleryItems.map((item) => (
+            {galleryData.map((item, index) => (
                 <div
                     className="relative group mb-6 last-of-type:mb-0"
-                    key={item.id}
+                    key={index}
                 >
                     {item.Image ? (
                         <Image

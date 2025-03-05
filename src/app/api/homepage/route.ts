@@ -3,15 +3,20 @@ import { NextResponse } from "next/server";
 export async function GET() {
     const query = `
     query {
-        galleries {
-            Description
-            Image {
-                url
-                width
-                height
-            }
-            Title
-        }
+		homepage {
+			Hero {
+			Logo {
+				url
+				width
+				height
+			}
+			Strapline
+			}
+			IntroText
+			ServiceText
+			ServiceTitle
+			Title
+		}
     }
   `;
 

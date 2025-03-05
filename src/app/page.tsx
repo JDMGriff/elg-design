@@ -1,72 +1,31 @@
-"use client";
-import { useState, useEffect } from "react";
-import Gallery from "@/app/components/Gallery";
-import Hero from "@/app/components/Hero";
+import ClientWrapper from "./components/ClientWrapper";
+import { HeroDataType, GalleryDataType } from "./types/types";
 
-interface GalleryItem {
-    id: number;
-    Title: string;
-    Description: string;
-    Image: {
-        url: string;
-        height: number;
-        width: number;
-    } | null;
+async function getHomepageData(): Promise<HeroDataType> {
+    const res = await fetch("http://localhost:3000/api/homepage", {
+        cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Failed to fetch homepage data");
+    const data = await res.json();
+    return data.data.homepage.Hero;
 }
 
-interface HeroData {
-    Hero: {
-        Logo: {
-            url: string;
-            height: number;
-            width: number;
-        };
-        Strapline: string;
-    };
+async function getGalleryData(): Promise<GalleryDataType[]> {
+    const res = await fetch("http://localhost:3000/api/gallery", {
+        cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Failed to fetch gallery data");
+    const data = await res.json();
+    return data.data.galleries; // Adjust based on your API response
 }
 
-export default function Home() {
-    const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
-    const [heroData, setHeroData] = useState<HeroData | null>(null);
-    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-
-    // Fetch data on mount
-    useEffect(() => {
-        const fetchData = async () => {
-            // Fetch gallery data
-            const galleryRes = await fetch("/api/gallery");
-            if (galleryRes.ok) {
-                const galleryData = await galleryRes.json();
-                setGalleryItems(galleryData);
-            } else {
-                console.error("Failed to load gallery data");
-            }
-
-            // Fetch hero data
-            const heroRes = await fetch("/api/hero");
-            if (heroRes.ok) {
-                const heroData = await heroRes.json();
-                setHeroData(heroData);
-            } else {
-                console.error("Failed to load hero data");
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    const toggleGallery = () => setIsGalleryOpen((prev) => !prev);
+export default async function HomePage() {
+    const heroData = await getHomepageData();
+    const galleryData = await getGalleryData();
 
     return (
-        <>
-            <div className="w-full h-full">
-                <Hero
-                    heroData={heroData}
-                    onToggleGallery={toggleGallery}
-                    isOpen={isGalleryOpen}
-                />
-            </div>
-            <Gallery galleryItems={galleryItems} isOpen={isGalleryOpen} />
-        </>
+        <div className="w-full h-full">
+            <ClientWrapper heroData={heroData} galleryData={galleryData} />
+        </div>
     );
 }
