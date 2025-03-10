@@ -4,18 +4,31 @@ export async function GET() {
     const query = `
     query {
 		homepage {
-			Hero {
-			Logo {
-				url
-				width
-				height
-			}
-			Strapline
-			}
 			IntroText
 			ServiceText
 			ServiceTitle
-			Title
+			Title		
+			Hero {
+				Logo {
+					url
+					width
+					height
+				}
+				Strapline
+			}
+			logo_slider {
+				logos {
+					url
+					width
+					height
+					documentId
+				}
+			}
+			testimonials {
+				testimonial
+				client
+				id
+			}				
 		}
     }
   `;

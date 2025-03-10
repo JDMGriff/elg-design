@@ -1,36 +1,36 @@
 "use client";
 // import { useState } from "react";
 import Image from "next/image";
-import { HeroDataType } from "../types/types";
+import { HomeDataType } from "../types/types";
 
 interface HeroProps {
-    heroData: HeroDataType;
+    homeData: HomeDataType;
     galleryToggle: () => void;
     isToggled: boolean;
 }
 
 export default function Hero({
-    heroData,
+    homeData,
     galleryToggle,
     isToggled,
 }: HeroProps) {
     return (
-        <div className="container mx-auto h-full flex flex-col items-start justify-end pb-20">
+        <div className="container mx-auto px-6 md:px-4 h-full flex flex-col items-start justify-end pb-20">
             <Image
                 alt="elg Logo"
-                className="max-w-[680px] w-full mb-6"
-                height={heroData.Logo.height}
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}${heroData.Logo.url}`}
-                width={heroData.Logo.width}
+                className="max-w-[680px] w-full mb-12 md:mb-6"
+                height={homeData.Hero.Logo.height}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${homeData.Hero.Logo.url}`}
+                width={homeData.Hero.Logo.width}
             />
-            <div className="w-full max-w-[60%] flex items-center justify-between">
-                <h1 className="text-lg uppercase text-white font-bold">
-                    {heroData.Strapline}
+            <div className="w-full max-w-none xl:max-w-[50%] flex flex-col items-start md:flex-row md:items-center justify-between">
+                <h1 className="text-lg uppercase text-white font-bold mb-12 md:mb-0">
+                    {homeData.Hero.Strapline}
                 </h1>
 
                 <button
                     onClick={galleryToggle}
-                    className="group rounded-sm text-white text-lg flex items-center pt-3 pr-8 pb-3 pl-4 transition-all duration-500 hover:bg-[rgba(0,0,0,0.4)]"
+                    className="group rounded-sm text-white text-lg flex items-center md:pt-3 md:pr-8 md:pb-3 md:pl-4 md:transition-all md:duration-500 md:hover:bg-[rgba(0,0,0,0.4)]"
                 >
                     {isToggled ? "Hide Gallery" : "View Gallery"}
                     <svg

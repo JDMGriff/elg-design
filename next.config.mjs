@@ -11,6 +11,18 @@ const nextConfig = {
         },
       ],
     },
+    productionBrowserSourceMaps: true,
+    webpack(config, { dev, isServer }) {
+      // Enable source maps in development for both client and server
+      if (dev) {
+        if (isServer) {
+          config.devtool = 'source-map'; // Server-side
+        } else {
+          config.devtool = 'eval-source-map'; // Client-side (browser), Next.js default
+        }
+      }
+      return config;
+    }, 
   };
   
   export default nextConfig;

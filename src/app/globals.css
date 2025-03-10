@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import "../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,7 @@
 :root {
 	--background: #eeeeee;
 	--foreground: #171717;
+	--accent: #FFE33E;
 	--font-open-sans: "Open Sans", serif;
 }
 
@@ -28,5 +30,42 @@ video {
 	left: 0;
 	position: fixed;
 	z-index: -1;
+	height: 100%;
 	width: 100%;
 }
+.service-items ul li {
+	display: flex;
+	align-items: center;
+	margin-right: 8px;
+}
+.service-items ul li::before {
+	content: "";
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	border-radius: 999px;
+	background-color: white;
+	margin-right: 8px;
+}
+/* Tailwind Typorgraphy overrides */
+.prose {
+	max-width: none !important;
+}
+.prose :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
+    color: white;
+}
+/* Testimonial Carousel */
+@keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  transform: translateY(20px);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  .animate-fadeInUp {
+	animation: fadeInUp 0.5s ease-in-out;
+  }

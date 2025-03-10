@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -21,6 +22,7 @@ export default function RootLayout({
                     />
                 </video>
                 {children}
+                <Footer />
             </body>
         </html>
     );
