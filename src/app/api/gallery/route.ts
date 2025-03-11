@@ -15,7 +15,7 @@ export async function GET() {
     }
   `;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}graphql`, {
+    const res = await fetch("https://elg-design-admin.onrender.com/graphql", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
