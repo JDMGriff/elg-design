@@ -2,7 +2,7 @@ import ClientWrapper from "./components/ClientWrapper";
 import { HomeDataType, GalleryDataType } from "./types/types";
 
 async function getHomepageData(): Promise<HomeDataType> {
-    const res = await fetch("http://localhost:3000/api/homepage", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/homepage`, {
         cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch homepage data");
@@ -11,7 +11,7 @@ async function getHomepageData(): Promise<HomeDataType> {
 }
 
 async function getGalleryData(): Promise<GalleryDataType[]> {
-    const res = await fetch("http://localhost:3000/api/gallery", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gallery`, {
         cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch gallery data");

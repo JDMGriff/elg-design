@@ -15,7 +15,7 @@ export async function GET() {
     }
   `;
 
-    const res = await fetch("http://localhost:1338/graphql", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}graphql`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
