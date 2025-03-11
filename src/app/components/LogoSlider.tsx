@@ -52,7 +52,7 @@ const LogoSlider = ({ homeData }: LogoSliderProps) => {
                                     key={logo.documentId}
                                     className="glide__slide flex items-center justify-center"
                                 >
-                                    <img
+                                    <Image
                                         src={`https://elg-design-admin.onrender.com${logo.url}`}
                                         alt={`Logo ${logo.documentId}`}
                                         width={150}

@@ -16,7 +16,7 @@ export default function Hero({
 }: HeroProps) {
     return (
         <div className="container mx-auto px-6 md:px-4 h-full flex flex-col items-start justify-end pb-20">
-            <img
+            <Image
                 alt="elg Logo"
                 className="max-w-[680px] w-full mb-12 md:mb-6"
                 height={homeData.Hero.Logo.height}
