@@ -3,14 +3,14 @@ import { HomeDataType, GalleryDataType } from "./types/types";
 
 async function getHomepageData(): Promise<HomeDataType> {
     const res = await fetch(
-        `https://elg-design-admin.onrender.com/api/homepage`,
+        `https://elg-design-admin.onrender.com/api/homepage?populate[Hero][populate]=Logo&populate[logo_slider][populate]=logos&populate[testimonials]=true`,
         {
             cache: "no-store",
         }
     );
     if (!res.ok) throw new Error("Failed to fetch homepage data");
     const data = await res.json();
-    return data.data.homepage;
+    return data.data;
 }
 
 async function getGalleryData(): Promise<GalleryDataType[]> {

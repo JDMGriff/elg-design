@@ -26,7 +26,10 @@ const nextConfig = {
     output: "standalone",
     env: {
       NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-  },    
+  },
+  images: {
+    domains: ['elg-design-admin.onrender.com'],
+  },  
   };
   
   export default nextConfig;

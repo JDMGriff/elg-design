@@ -16,11 +16,11 @@ export default function Hero({
 }: HeroProps) {
     return (
         <div className="container mx-auto px-6 md:px-4 h-full flex flex-col items-start justify-end pb-20">
-            <Image
+            <img
                 alt="elg Logo"
                 className="max-w-[680px] w-full mb-12 md:mb-6"
                 height={homeData.Hero.Logo.height}
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}${homeData.Hero.Logo.url}`}
+                src={`https://elg-design-admin.onrender.com${homeData.Hero.Logo.url}`}
                 width={homeData.Hero.Logo.width}
             />
             <div className="w-full max-w-none xl:max-w-[50%] flex flex-col items-start md:flex-row md:items-center justify-between">
