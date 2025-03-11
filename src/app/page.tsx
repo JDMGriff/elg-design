@@ -15,14 +15,14 @@ async function getHomepageData(): Promise<HomeDataType> {
 
 async function getGalleryData(): Promise<GalleryDataType[]> {
     const res = await fetch(
-        `https://elg-design-admin.onrender.com/api/gallery`,
+        `https://elg-design-admin.onrender.com/api/galleries`,
         {
             cache: "no-store",
         }
     );
     if (!res.ok) throw new Error("Failed to fetch gallery data");
     const data = await res.json();
-    return data.data.galleries; // Adjust based on your API response
+    return data.data;
 }
 
 export default async function HomePage() {
