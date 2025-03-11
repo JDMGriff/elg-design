@@ -57,15 +57,15 @@ video {
 /* Testimonial Carousel */
 @keyframes fadeInUp {
 	from {
-	  opacity: 0;
-	  transform: translateY(20px);
+		opacity: 0;
+		transform: translateY(20px);
 	}
 	to {
-	  opacity: 1;
-	  transform: translateY(0);
+		opacity: 1;
+		transform: translateY(0);
 	}
-  }
+}
   
-  .animate-fadeInUp {
+.animate-fadeInUp {
 	animation: fadeInUp 0.5s ease-in-out;
-  }
+}
