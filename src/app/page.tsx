@@ -15,7 +15,7 @@ async function getHomepageData(): Promise<HomeDataType> {
 
 async function getGalleryData(): Promise<GalleryDataType[]> {
     const res = await fetch(
-        `https://elg-design-admin.onrender.com/api/galleries`,
+        `https://elg-design-admin.onrender.com/api/gallery`,
         {
             cache: "no-store",
         }
