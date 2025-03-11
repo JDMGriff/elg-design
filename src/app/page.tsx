@@ -22,7 +22,7 @@ async function getGalleryData(): Promise<GalleryDataType[]> {
     );
     if (!res.ok) throw new Error("Failed to fetch gallery data");
     const data = await res.json();
-    return data.data;
+    return data.data.galleries;
 }
 
 export default async function HomePage() {
